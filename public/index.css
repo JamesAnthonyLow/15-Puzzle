@@ -1,0 +1,45 @@
+:root {
+  /*variables that may need to be changed in media queries*/
+  --piecesize: 100px;
+  --piecemargin: 5px;
+  --puzzlesize: 480px;
+  --containeroffset: 14px;
+
+  /*colors*/
+  --brightbeige: #ffffe6;
+  --lightergrey: #b3b3b3;
+  --darkergrey: #8c8c8c;
+}
+
+body {
+  background: var(--brightbeige);
+}
+
+.piece {
+  height: var(--piecesize);
+  width: var(--piecesize);
+  margin: var(--piecemargin);
+
+  border-radius: 10%;
+  background: var(--darkergrey);
+  display: inline-block;
+}
+
+.container{
+  height: var(--puzzlesize);
+  width: var(--puzzlesize);
+  position: relative;
+  left: var(--containeroffset);
+  top: var(--containeroffset);
+}
+
+.puzzle {
+  height: var(--puzzlesize);
+  width: var(--puzzlesize);
+  background: var(--lightergrey);
+
+  /*centering*/
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
