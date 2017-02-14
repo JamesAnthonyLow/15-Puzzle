@@ -1,0 +1,79 @@
+:root {
+  /*variables that may need to be changed in media queries*/
+  --piecesize: 100px;
+  --piecemargin: 5px;
+  --puzzlesize: 480px;
+  --negpuzzlesize: -440px;
+  --containeroffset: 14px;
+  --piecefontsize: 5em;
+
+  /*colors*/
+  --brightbeige: #ffffe6;
+  --lightergrey: #b3b3b3;
+  --darkergrey: #8c8c8c;
+  --emptycolor: white;
+}
+
+body {
+  background: var(--brightbeige);
+}
+
+.piece {
+  height: var(--piecesize);
+  width: var(--piecesize);
+  margin: var(--piecemargin);
+  text-align: center;
+  line-height: var(--piecesize);
+  font-size: var(--piecefontsize);
+
+  /*shadow effects and font coloring*/
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  box-shadow: 10px 10px 5px grey;
+
+  border-radius: 10%;
+  background: var(--darkergrey);
+  display: inline-block;
+  z-index: 1;
+}
+
+.backdrop {
+  position: relative;
+  top: var(--negpuzzlesize);
+  background: var(--emptycolor);
+  color: var(--emptycolor);
+  box-shadow: none;
+  text-shadow: none;
+  z-index: -1;
+}
+
+.chosen{
+  position:relative;
+}
+
+.empty{
+  background: var(--emptycolor);
+  color: var(--emptycolor);
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.container{
+  height: var(--puzzlesize);
+  width: var(--puzzlesize);
+  position: relative;
+  left: var(--containeroffset);
+  top: var(--containeroffset);
+}
+
+.puzzle {
+  height: var(--puzzlesize);
+  width: var(--puzzlesize);
+  background: var(--lightergrey);
+
+  /*centering*/
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  z-index: -2;
+}
