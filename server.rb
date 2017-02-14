@@ -1,5 +1,5 @@
 class Puzzle < Sinatra::Base
   get '/' do
-    "Hello World!"
+    File.read("index.html")
   end
 end
