@@ -55,6 +55,7 @@ var Cursor = (function(){
         movetile(curr);
         curr.dom.classList.add("empty");
         nextSpace.dom.classList.remove("empty");
+        return curr;
       }
     },
     moveTilesRight: function(){
@@ -81,5 +82,37 @@ var Cursor = (function(){
       var movetile =  function(piece) { return that.moveTileDownOne(piece); };
       this.moveTiles(direction, movetile);
     },
+    makeChosen: function(piece){
+      if(piece === undefined)
+        return;
+      var chosen = Board.getChosen();
+      chosen.dom.classList.remove("chosen");
+      piece.dom.classList.add("chosen");
+    },
+    moveTilesRandomly: function(){
+      var empty, result, howManyMoves, randomPiece;
+      var getRandom = function(n){
+        return Math.floor(Math.random() * n);
+      };
+      howManyMoves = getRandom(1000);
+      for(var j=0; j<howManyMoves; j++)
+        for(var i=0; i<10; i++){
+          randomPiece = Board.getRandomPieceNearEmpty();
+          this.makeChosen(randomPiece);
+          result = this.moveTilesUp();
+          if(result !== undefined)
+            continue;
+          result = this.moveTilesDown();
+          if(result !== undefined)
+            continue;
+          result = this.moveTilesLeft();
+          if(result !== undefined)
+            continue;
+          result = this.moveTilesRight();
+          if(result !== undefined)
+            continue;
+          this.makeChosen(Board.getPieceByNumber(getRandom(15)));
+        }
+    }
   };
 })();

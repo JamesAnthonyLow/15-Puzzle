@@ -12,13 +12,68 @@ var Board = (function() {
     getChosen: function(){
       return Piece(document.getElementsByClassName("chosen")[0]);
     },
+    getRandomPieceNearEmpty: function(){
+      var randomPiece, empty, i;
+      var getRandom = function(n){
+        return Math.floor(Math.random() * n);
+      };
+      empty = this.getEmpty();
+      randomPiece = this.getPieceOneUp(empty);
+      switch(getRandom(2)){
+        case 1:
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneUp(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneDown(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneLeft(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneRight(empty);
+            return randomPiece;
+          }
+          break;
+        case 2:
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneLeft(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneRight(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneUp(empty);
+            return randomPiece;
+          }
+          if(randomPiece){
+            for(i=0; i<getRandom(3); i++)
+              randomPiece = this.getPieceOneDown(empty);
+            return randomPiece;
+          }
+          break;
+      }
+      return randomPiece;
+    },
     getPieceByNumber: function(n){
       var p = this.getPieces();
       for(var i=0; i<p.length; i++){
         if(p[i].dom.innerHTML == n)
-          return p;
+          return p[i];
       }
-      return undefined;
+      return p[0];
     },
     getEmpty: function(){
       return Piece(document.getElementsByClassName("empty")[0]);

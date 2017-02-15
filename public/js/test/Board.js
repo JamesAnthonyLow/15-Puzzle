@@ -17,6 +17,10 @@ var TestBoard = {
     var piece = Board.getPieceByNumber(3);
     Helpers.expect(name, piece !== undefined);
   },
+  test_getRandomPieceNearEmpty: function(name){
+    var piece = Board.getRandomPieceNearEmpty();
+    Helpers.expect(name, piece !== undefined);
+  },
   test_getEmpty: function(name){
     var empty = Board.getEmpty();
     Helpers.expect(name, empty !== undefined);
