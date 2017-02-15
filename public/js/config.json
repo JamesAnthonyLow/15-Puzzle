@@ -1,4 +1,4 @@
 {
-  "src": ["Piece.js", "Board.js", "Cursor.js", "Keys.js"],
+  "src": ["Piece.js", "Board.js", "Cursor.js", "Keys.js", "Randomizer.js"],
   "test": ["helpers.js", "Piece.js", "Board.js"]
 }
