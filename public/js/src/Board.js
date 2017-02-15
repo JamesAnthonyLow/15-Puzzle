@@ -74,7 +74,7 @@ var Board = (function() {
       return Piece(document.elementFromPoint(x, y));
     },
     exceedsTopBoundary: function(piece){
-      return (piece.top - Board.getPieceHeight()) < this.getTopBoundary();
+      return piece.top == this.getTopBoundary();
     }
   }
 })();
