@@ -36,15 +36,9 @@ var Board = {
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneLeft: function(piece){
-    var centering = Piece.getPieceHeight() * 0.05;
-    var x = piece.left+centering;
-    var y = piece.top+(Piece.getPieceHeight()-centering);
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneRight: function(piece){
-    var centering = Piece.getPieceHeight() * 0.05;
-    var x = piece.left+centering;
-    var y = piece.top+(Piece.getPieceHeight()-centering);
     return Piece.newPiece(document.elementFromPoint(x, y));
   }
 };
