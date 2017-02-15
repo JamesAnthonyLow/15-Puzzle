@@ -20,15 +20,11 @@ var TestBoard = {
   test_getTopBoundarygetBottomBoundary: function(name){
     var top = Board.getTopBoundary();
     var bottom = Board.getBottomBoundary();
-    Helpers.expect(name + " top greater than 0", top > 0);
-    Helpers.expect(name + " bottom greater than 0", bottom > 0);
     Helpers.expect(name + " top < bottom", top < bottom);
   },
   test_get_LeftBoundaryget_RightBoundary: function(name){
     var left = Board.getLeftBoundary();
     var right = Board.getRightBoundary();
-    Helpers.expect(name + " left greater than 0", left > 0);
-    Helpers.expect(name + " right greater than 0", right > 0);
     Helpers.expect(name + " left < right", left < right);
   },
   test_getPieceOneUp: function(name){
@@ -59,6 +55,36 @@ var TestBoard = {
         (chosen.bottom + Board.getPieceHeight()) == oneDown.bottom);
       Helpers.expect(name + " oneDown should be same column as chosen",
         chosen.left == oneDown.left && chosen.right == oneDown.right);
+    }
+  },
+  test_getPieceOneLeft: function(name){
+    var chosen = Board.getChosen();
+    var oneLeft  = Board.getPieceOneLeft(chosen);
+    if(Board.exceedsLeftBoundary(chosen)){
+      Helpers.expect(name + "piece is undefined if next piece left exceeds BottomBoundary", 
+        oneLeft === undefined);
+    } else {
+      Helpers.expect(name + " piece is defined", 
+        oneLeft !== undefined);
+      Helpers.expect(name + " oneLeft should be one piece size left from chosen",
+        (chosen.left - Board.getPieceWidth()) == oneLeft.left);
+      Helpers.expect(name + " oneLeft should be same row as chosen",
+        chosen.top == oneLeft.top && chosen.bottom == oneLeft.bottom);
+    }
+  },
+  test_getPieceOneRight: function(name){
+    var chosen = Board.getChosen();
+    var oneRight  = Board.getPieceOneRight(chosen);
+    if(Board.exceedsRightBoundary(chosen)){
+      Helpers.expect(name + "piece is undefined if next piece right exceeds BottomBoundary", 
+        oneRight === undefined);
+    } else {
+      Helpers.expect(name + " piece is defined", 
+        oneRight !== undefined);
+      Helpers.expect(name + " oneRight should be one piece size right from chosen",
+        (chosen.right + Board.getPieceWidth()) == oneRight.right);
+      Helpers.expect(name + " oneRight should be same row as chosen",
+        chosen.top == oneRight.top && chosen.bottom == oneRight.bottom);
     }
   }
 };

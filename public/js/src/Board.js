@@ -70,9 +70,17 @@ var Board = (function() {
       return Piece(document.elementFromPoint(x, y));
     },
     getPieceOneLeft: function(piece){
+      if(this.exceedsLeftBoundary(piece))
+        return undefined;
+      var x = piece.center.x - Board.getPieceWidth();
+      var y = piece.center.y;
       return Piece(document.elementFromPoint(x, y));
     },
     getPieceOneRight: function(piece){
+      if(this.exceedsRightBoundary(piece))
+        return undefined;
+      var x = piece.center.x + Board.getPieceWidth();
+      var y = piece.center.y;
       return Piece(document.elementFromPoint(x, y));
     },
     exceedsTopBoundary: function(piece){
@@ -80,6 +88,12 @@ var Board = (function() {
     },
     exceedsBottomBoundary: function(piece){
       return piece.bottom == this.getBottomBoundary();
+    },
+    exceedsLeftBoundary: function(piece){
+      return piece.left == this.getLeftBoundary();
+    },
+    exceedsRightBoundary: function(piece){
+      return piece.right == this.getRightBoundary();
     }
   };
 })();
