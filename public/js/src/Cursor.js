@@ -20,27 +20,45 @@ var Cursor = (function(){
     moveCursorOneDown: function(){
       this.moveOneSpace(function(piece) { return Board.getPieceOneDown(piece); });
     },
-    moveTileOne: function(fn){
+    moveTileOne: function(piece, fn){
       var num;
-      var chosen = Board.getChosen();
-      var one = fn(chosen);
+      var one = fn(piece);
       if(one === undefined)
         return;
-      num = chosen.dom.innerHTML;
-      chosen.dom.innerHTML = one.dom.innerHTML;
+      num = piece.dom.innerHTML;
+      piece.dom.innerHTML = one.dom.innerHTML;
       one.dom.innerHTML = num;
     },
-    moveTileUpOne: function(){
-      this.moveTileOne(function(piece) { return Board.getPieceOneUp(piece); });
+    moveTileUpOne: function(curr){
+      this.moveTileOne(curr, function(piece) { return Board.getPieceOneUp(piece); });
     },
-    moveTileLeftOne: function(){
-      this.moveTileOne(function(piece) { return Board.getPieceOneLeft(piece); });
+    moveTileLeftOne: function(curr){
+      this.moveTileOne(curr, function(piece) { return Board.getPieceOneLeft(piece); });
     },
-    moveTileRightOne: function(){
-      this.moveTileOne(function(piece) { return Board.getPieceOneRight(piece); });
+    moveTileRightOne: function(curr){
+      this.moveTileOne(curr, function(piece) { return Board.getPieceOneRight(piece); });
     },
-    moveTileDownOne: function(){
-      this.moveTileOne(function(piece) { return Board.getPieceOneDown(piece); });
+    moveTileDownOne: function(curr){
+      this.moveTileOne(curr, function(piece) { return Board.getPieceOneDown(piece); });
     },
+    moveTiles: function moveTiles(direction, movetile, curr){
+      if(curr === undefined)
+        curr = Board.getChosen();
+      var nextSpace = direction(curr);
+      if(nextSpace === undefined)
+        return undefined;
+      moveTiles(direction, movetile, nextSpace);
+      if(nextSpace.dom.classList.contains("empty")){
+        movetile(curr);
+        curr.dom.classList.add("empty");
+        nextSpace.dom.classList.remove("empty");
+      }
+    },
+    moveTilesRight: function(){
+      var that = this;
+      var direction = function(piece) { return Board.getPieceOneRight(piece); };
+      var movetile =  function(piece) { return that.moveTileRightOne(piece); };
+      this.moveTiles(direction, movetile);
+    }
   };
 })();
