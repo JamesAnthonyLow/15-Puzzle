@@ -37,6 +37,24 @@ var Piece = {
     var y = piece.top-(this.getPieceHeight()-centering);
     return this.newPiece(document.elementFromPoint(x, y));
   },
+  getPieceOneDown: function(piece){
+    var centering = this.getPieceHeight() * 0.05;
+    var x = piece.left+centering;
+    var y = piece.top+(this.getPieceHeight()-centering);
+    return this.newPiece(document.elementFromPoint(x, y));
+  },
+  getPieceOneLeft: function(piece){
+    var centering = this.getPieceHeight() * 0.05;
+    var x = piece.left+centering;
+    var y = piece.top+(this.getPieceHeight()-centering);
+    return this.newPiece(document.elementFromPoint(x, y));
+  },
+  getPieceOneRight: function(piece){
+    var centering = this.getPieceHeight() * 0.05;
+    var x = piece.left+centering;
+    var y = piece.top+(this.getPieceHeight()-centering);
+    return this.newPiece(document.elementFromPoint(x, y));
+  },
   newPiece: function(domObj){
     var piece = {}, pos;
     piece.dom = domObj;

@@ -1,0 +1,4 @@
+{
+  "src": ["main.js"],
+  "test": ["test.js"]
+}
