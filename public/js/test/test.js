@@ -14,12 +14,12 @@ var Helpers  = {
   }
 };
 
-function RunTests(TestObj){
+var RunTests = function(TestObj){
    //run each test
   console.clear();
   for (var key in TestObj) 
     TestObj[key](key.toString());
-}
+};
 
 var TestPiece = {
   test_getChosen: function(name){
