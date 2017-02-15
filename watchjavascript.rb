@@ -11,12 +11,12 @@ class JavascriptListener
       compile
     end
   end
-  private
   def compile
     buffer = get_files("src")
     buffer += get_files("test")
     File.write("#{@js_dir}/build/main.js", Uglifier.compile(buffer))
   end
+  private
   def get_file_names
     JSON.parse(File.open("#{@js_dir}/config.json", "r").read)
   end
@@ -29,4 +29,4 @@ class JavascriptListener
   end
 end
 
-JavascriptListener.new("#{Dir.pwd}/public/js").listen
+JavascriptListener.new("#{Dir.pwd}/public/js").send(ARGV[0])
