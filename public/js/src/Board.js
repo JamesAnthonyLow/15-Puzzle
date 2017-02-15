@@ -56,10 +56,10 @@ var Board = (function() {
       return this.getSideBoundary("right", function(a, b){ return a < b; });
     },
     exceedsTopBoundary: function(piece){
-      return piece.top == this.getTopBoundary();
+      return piece.top <= this.getTopBoundary();
     },
     exceedsBottomBoundary: function(piece){
-      return piece.bottom == this.getBottomBoundary();
+      return piece.bottom >= this.getBottomBoundary();
     },
     exceedsLeftBoundary: function(piece){
       return piece.left == this.getLeftBoundary();
