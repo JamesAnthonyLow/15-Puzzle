@@ -17,8 +17,27 @@ var Cursor = (function(){
     moveCursorOneRight: function(){
       this.moveOneSpace(function(piece) { return Board.getPieceOneRight(piece); });
     },
-    moveCursorOneBottom: function(){
-      this.moveOneSpace(function(piece) { return Board.getPieceOneBottom(piece); });
+    moveCursorOneDown: function(){
+      this.moveOneSpace(function(piece) { return Board.getPieceOneDown(piece); });
     }
   };
 })();
+listen = function(){
+  window.onkeydown = function(e){
+    e.preventDefault();
+    switch(e.keyCode){
+      case 37:
+        Cursor.moveCursorOneLeft();
+        break;
+      case 38:
+        Cursor.moveCursorOneUp();
+        break;
+      case 39:
+        Cursor.moveCursorOneRight();
+        break;
+      case 40:
+        Cursor.moveCursorOneDown();
+        break;
+    }
+  };
+};
