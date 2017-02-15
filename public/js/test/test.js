@@ -1,26 +1,42 @@
 function RunTests(){
   //helpers
-  var fail = function(name){
-    console.error("%c FAIL " + name, "color: red");
+  var fail = function(message){
+    console.error("%c FAIL " + message, "color: red");
   };
-  var pass = function(name){
-    console.log("%c PASS " + name, "color: blue");
+  var pass = function(message){
+    console.log("%c PASS " + message, "color: blue");
   };
-  var expect = function(name, bool){
+  var expect = function(message, bool){
     if(bool)
-      pass(name);
+      pass(message);
     else
-      fail(name);
+      fail(message);
   };
 
   var Tests = {
-    testGetChosen: function(name){
+    test_getChosen: function(name){
       var chosen = getChosen();
       expect(name, chosen !== undefined);
     },
-    testGetEmpty: function(name){
+    test_getEmpty: function(name){
       var empty = getEmpty();
       expect(name, empty !== undefined);
+    },
+    test_getPosition: function(name){
+      var chosen = getChosen();
+      var pos = getPosition(chosen);
+      expect(name + " returns obj", 
+        pos !== undefined);
+      if(pos === undefined)
+        return;
+      expect(name + " obj has top element", 
+        pos.top !== undefined);
+      expect(name + " obj has left element", 
+        pos.left !== undefined);
+      expect(name + " obj has right element", 
+        pos.right !== undefined);
+      expect(name + " obj has bottom element", 
+        pos.bottom !== undefined);
     }
   };
 
