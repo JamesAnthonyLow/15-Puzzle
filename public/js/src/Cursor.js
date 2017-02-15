@@ -42,8 +42,11 @@ var Cursor = (function(){
       this.moveTileOne(curr, function(piece) { return Board.getPieceOneDown(piece); });
     },
     moveTiles: function moveTiles(direction, movetile, curr){
-      if(curr === undefined)
+      if(curr === undefined){
         curr = Board.getChosen();
+        if(curr.dom.classList.contains("empty"))
+          return undefined;
+      }
       var nextSpace = direction(curr);
       if(nextSpace === undefined)
         return undefined;
@@ -59,6 +62,24 @@ var Cursor = (function(){
       var direction = function(piece) { return Board.getPieceOneRight(piece); };
       var movetile =  function(piece) { return that.moveTileRightOne(piece); };
       this.moveTiles(direction, movetile);
-    }
+    },
+    moveTilesLeft: function(){
+      var that = this;
+      var direction = function(piece) { return Board.getPieceOneLeft(piece); };
+      var movetile =  function(piece) { return that.moveTileLeftOne(piece); };
+      this.moveTiles(direction, movetile);
+    },
+    moveTilesUp: function(){
+      var that = this;
+      var direction = function(piece) { return Board.getPieceOneUp(piece); };
+      var movetile =  function(piece) { return that.moveTileUpOne(piece); };
+      this.moveTiles(direction, movetile);
+    },
+    moveTilesDown: function(){
+      var that = this;
+      var direction = function(piece) { return Board.getPieceOneDown(piece); };
+      var movetile =  function(piece) { return that.moveTileDownOne(piece); };
+      this.moveTiles(direction, movetile);
+    },
   };
 })();
