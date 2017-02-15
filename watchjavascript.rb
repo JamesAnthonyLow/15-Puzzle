@@ -4,7 +4,7 @@ require 'json'
 class JavascriptListener
   def initialize dir
     @js_dir = dir
-    @js_files = get_file_names
+    get_file_names
   end
   def listen
     FileWatcher.new("#{@js_dir}/*/*.js", spinner: true, interval: 0.1).watch do |f|
@@ -22,7 +22,7 @@ class JavascriptListener
   end
   def get_files(dir)
     str = ""
-    @js_files[dir].each do |f|
+    get_file_names[dir].each do |f|
       str += File.open("#{@js_dir}/#{dir}/#{f}").read if (f.length > 0)
     end
     str
