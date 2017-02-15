@@ -28,14 +28,25 @@ var Piece = {
   getPieceWidth: function(){
     return this.getPieceSize("left");
   },
-   newPiece: function(domObj){
+  getPos: function(piece){
+    return piece.getBoundingClientRect();
+  },
+  top: function(){
+    return getPos().top;
+  },
+  left: function(){
+    return getPos().left;
+  },
+  right: function(){
+    return getPos().right;
+  },
+  bottom: function(){
+    return getPos().bottom;
+  },
+  newPiece: function(domObj){
     var piece = {}, pos;
     piece.dom = domObj;
     pos = domObj.getBoundingClientRect();
-    piece.top    = pos.top;
-    piece.left   = pos.left;
-    piece.right  = pos.right;
-    piece.bottom = pos.bottom;
     return piece;
   },
 };
