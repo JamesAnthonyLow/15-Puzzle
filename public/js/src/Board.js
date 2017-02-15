@@ -1,4 +1,13 @@
 var Board = {
+  pieces: [],
+  getPieces: function(){
+    if(this.pieces.length)
+      return this.pieces;
+    var p = document.getElementsByClassName("piece");
+    for(var i=0; i<p.length; i++)
+      this.pieces.push(Piece.newPiece(p[i]));
+    return this.pieces;
+  },
   getChosen: function(){
     return Piece.newPiece(document.getElementsByClassName("chosen")[0]);
   },
@@ -6,7 +15,7 @@ var Board = {
     return Piece.newPiece(document.getElementsByClassName("empty")[0]);
   },
   getSideBoundary: function(side, compare){
-    var p = Piece.getPieces();
+    var p = this.getPieces();
     var min_or_max = p[0][side];
     for(var i=0; i<p.length; i++)
       if(compare(min_or_max, p[i][side]))

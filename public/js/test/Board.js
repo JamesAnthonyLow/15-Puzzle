@@ -24,7 +24,6 @@ var TestBoard = {
   test_getPieceOneUp: function(name){
     var chosen = Board.getChosen();
     var oneUp  = Board.getPieceOneUp(chosen);
-    console.log(oneUp);
     Helpers.expect(name + " piece is defined", 
       oneUp !== undefined);
     Helpers.expect(name + " oneUp should be one piece size up from chosen",
