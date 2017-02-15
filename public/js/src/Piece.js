@@ -1,9 +1,12 @@
 var Piece = {
+  pieces: [],
   getPieces: function(){
-    var arr = [], p = document.getElementsByClassName("piece");
+    if(this.pieces.length)
+      return this.pieces;
+    var p = document.getElementsByClassName("piece");
     for(var i=0; i<p.length; i++)
-      arr.push(this.newPiece(p[i]));
-    return arr;
+      this.pieces.push(this.newPiece(p[i]));
+    return this.pieces;
   },
   pieceSide: { top: undefined, left: undefined },
   getPieceSize: function(side){
@@ -25,7 +28,7 @@ var Piece = {
   getPieceWidth: function(){
     return this.getPieceSize("left");
   },
-  newPiece: function(domObj){
+   newPiece: function(domObj){
     var piece = {}, pos;
     piece.dom = domObj;
     pos = domObj.getBoundingClientRect();
