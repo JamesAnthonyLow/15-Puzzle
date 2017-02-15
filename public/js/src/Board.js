@@ -14,16 +14,16 @@ var Board = {
     return min_or_max;
   },
   getTopBoundary: function(){
-    this.getSideBoundary("top", function(a, b){ return a < b; });
+    return this.getSideBoundary("top", function(a, b){ return a > b; });
   },
   getBottomBoundary: function(){
-    this.getSideBoundary("bottom", function(a, b){ return a > b; });
+    return this.getSideBoundary("bottom", function(a, b){ return a < b; });
   },
   getLeftBoundary: function(){
-    this.getSideBoundary("left", function(a, b){ return a < b; });
+    return this.getSideBoundary("left", function(a, b){ return a > b; });
   },
   getRightBoundary: function(){
-    this.getSideBoundar("right", function(a, b){ return a > b; });
+    return this.getSideBoundary("right", function(a, b){ return a < b; });
   },
   getPieceOneUp: function(piece){
     var centering = Piece.getPieceHeight() * 0.05;

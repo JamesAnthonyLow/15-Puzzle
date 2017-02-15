@@ -7,14 +7,6 @@ var TestPiece = {
     var empty = Board.getEmpty();
     Helpers.expect(name, empty !== undefined);
   },
-  test_newPiece: function(name){
-    var chosen = document.getElementsByClassName("chosen")[0];
-    var piece = Piece.newPiece(chosen);
-    Helpers.expect(name + " has top",    piece.top    !== undefined);
-    Helpers.expect(name + " has left",   piece.left   !== undefined);
-    Helpers.expect(name + " has right",  piece.right  !== undefined);
-    Helpers.expect(name + " has bottom", piece.bottom !== undefined);
-  },
   test_getPieceHeight: function(name){
     var height = Piece.getPieceHeight();
     Helpers.expect(name + " height is defined", height !== undefined);
