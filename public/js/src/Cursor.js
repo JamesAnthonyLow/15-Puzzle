@@ -91,7 +91,7 @@ var Cursor = (function(){
     },
     moveTilesRandomly: function(){
       var empty, result, howManyMoves, randomPiece;
-      howManyMoves = Randomizer.getRandom(1000);
+      howManyMoves = Randomizer.getRandom(100);
       for(var j=0; j<howManyMoves; j++)
         for(var i=0; i<10; i++){
           randomPiece = Randomizer.getRandomPieceNearEmpty();

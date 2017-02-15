@@ -1,9 +1,7 @@
 var Board = (function() {
-  var pieces = [];
   return {
     getPieces: function(){
-      if(pieces.length)
-        return pieces;
+      var pieces = [];
       var p = document.getElementsByClassName("piece");
       for(var i=0; i<p.length; i++)
         pieces.push(Piece(p[i]));
@@ -23,16 +21,12 @@ var Board = (function() {
     getEmpty: function(){
       return Piece(document.getElementsByClassName("empty")[0]);
     },
-    pieceSide: { top: undefined, left: undefined },
     getPieceSize: function(side){
-      if(this.pieceSide[side] !== undefined)
-        return this.pieceSide[side];
       var diff = 0, pieces = this.getPieces();
       for(var i=0; i<pieces.length-1; i++){
         diff = Math.abs(pieces[i][side] - pieces[i+1][side]);
         if(diff > 0){
-          this.pieceSide[side] = diff;
-          return this.pieceSide[side];
+          return diff;
         }
       }
       return 0;
