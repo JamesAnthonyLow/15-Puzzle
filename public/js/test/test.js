@@ -1,17 +1,10 @@
-var RunTests = function(TestObj){
-  //run each test
-  console.clear();
-  for (var key in TestObj) 
-    TestObj[key](key.toString());
-};
-
 var TestPiece = {
   test_getChosen: function(name){
-    var chosen = Piece.getChosen();
+    var chosen = Board.getChosen();
     Helpers.expect(name, chosen !== undefined);
   },
   test_getEmpty: function(name){
-    var empty = Piece.getEmpty();
+    var empty = Board.getEmpty();
     Helpers.expect(name, empty !== undefined);
   },
   test_newPiece: function(name){
@@ -33,8 +26,8 @@ var TestPiece = {
     Helpers.expect(name + " width is greater than 0", width > 0);
   },
   test_getPieceOneUp: function(name){
-    var chosen = Piece.getChosen();
-    var oneUp  = Piece.getPieceOneUp(chosen);
+    var chosen = Board.getChosen();
+    var oneUp  = Board.getPieceOneUp(chosen);
     Helpers.expect(name + " piece is defined", 
       oneUp !== undefined);
     Helpers.expect(name + " oneUp should be one piece size up from chosen",

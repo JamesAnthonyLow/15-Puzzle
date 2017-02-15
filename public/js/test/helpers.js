@@ -13,3 +13,10 @@ var Helpers  = {
       this.fail(message);
   }
 };
+
+var RunTests = function(TestObj){
+  //run each test
+  console.clear();
+  for (var key in TestObj) 
+    TestObj[key](key.toString());
+};
