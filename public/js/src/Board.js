@@ -26,15 +26,13 @@ var Board = {
     return this.getSideBoundary("right", function(a, b){ return a < b; });
   },
   getPieceOneUp: function(piece){
-    var centering = Piece.getPieceHeight() * 0.05;
-    var x = piece.left+centering;
-    var y = piece.top-(Piece.getPieceHeight()-centering);
+    var x = piece.center.x;
+    var y = piece.center.y - Piece.getPieceHeight();
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneDown: function(piece){
-    var centering = Piece.getPieceHeight() * 0.05;
-    var x = piece.left+centering;
-    var y = piece.top+(Piece.getPieceHeight()-centering);
+    var x = piece.center.x;
+    var y = piece.center.y + Piece.getPieceHeight();
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneLeft: function(piece){
