@@ -55,6 +55,18 @@ var Board = (function() {
     getRightBoundary: function(){
       return this.getSideBoundary("right", function(a, b){ return a < b; });
     },
+    exceedsTopBoundary: function(piece){
+      return piece.top == this.getTopBoundary();
+    },
+    exceedsBottomBoundary: function(piece){
+      return piece.bottom == this.getBottomBoundary();
+    },
+    exceedsLeftBoundary: function(piece){
+      return piece.left == this.getLeftBoundary();
+    },
+    exceedsRightBoundary: function(piece){
+      return piece.right == this.getRightBoundary();
+    },
     getPieceOneUp: function(piece){
       if(this.exceedsTopBoundary(piece))
         return undefined;
@@ -82,18 +94,6 @@ var Board = (function() {
       var x = piece.center.x + Board.getPieceWidth();
       var y = piece.center.y;
       return Piece(document.elementFromPoint(x, y));
-    },
-    exceedsTopBoundary: function(piece){
-      return piece.top == this.getTopBoundary();
-    },
-    exceedsBottomBoundary: function(piece){
-      return piece.bottom == this.getBottomBoundary();
-    },
-    exceedsLeftBoundary: function(piece){
-      return piece.left == this.getLeftBoundary();
-    },
-    exceedsRightBoundary: function(piece){
-      return piece.right == this.getRightBoundary();
     }
   };
 })();
