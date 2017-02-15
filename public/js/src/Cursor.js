@@ -9,7 +9,7 @@ var Cursor = (function(){
       oneSpace.dom.classList.add("chosen");
     },
     moveCursorOneUp: function(){
-      this.moveOneSpace(function(piece) { return Board.getPieceOneUp(piece); } );
+      this.moveOneSpace(function(piece) { return Board.getPieceOneUp(piece); });
     },
     moveCursorOneLeft: function(){
       this.moveOneSpace(function(piece) { return Board.getPieceOneLeft(piece); });
@@ -19,25 +19,28 @@ var Cursor = (function(){
     },
     moveCursorOneDown: function(){
       this.moveOneSpace(function(piece) { return Board.getPieceOneDown(piece); });
-    }
+    },
+    moveTileOne: function(fn){
+      var num;
+      var chosen = Board.getChosen();
+      var one = fn(chosen);
+      if(one === undefined)
+        return;
+      num = chosen.dom.innerHTML;
+      chosen.dom.innerHTML = one.dom.innerHTML;
+      one.dom.innerHTML = num;
+    },
+    moveTileUpOne: function(){
+      this.moveTileOne(function(piece) { return Board.getPieceOneUp(piece); });
+    },
+    moveTileLeftOne: function(){
+      this.moveTileOne(function(piece) { return Board.getPieceOneLeft(piece); });
+    },
+    moveTileRightOne: function(){
+      this.moveTileOne(function(piece) { return Board.getPieceOneRight(piece); });
+    },
+    moveTileDownOne: function(){
+      this.moveTileOne(function(piece) { return Board.getPieceOneDown(piece); });
+    },
   };
 })();
-listen = function(){
-  window.onkeydown = function(e){
-    e.preventDefault();
-    switch(e.keyCode){
-      case 37:
-        Cursor.moveCursorOneLeft();
-        break;
-      case 38:
-        Cursor.moveCursorOneUp();
-        break;
-      case 39:
-        Cursor.moveCursorOneRight();
-        break;
-      case 40:
-        Cursor.moveCursorOneDown();
-        break;
-    }
-  };
-};
