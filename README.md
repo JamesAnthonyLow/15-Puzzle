@@ -7,7 +7,7 @@ Instructions to play:
 Use arrow keys to move cursor and hold down the spacebar while pressing arrow keys to move tiles. 
 
 ```bash
-rake run #To run the server
+rake run #To run the server on 0.0.0.0:3000
 rake compile #To compress the javascript into one file
 rake watch #To watch your javascript files and compress as you edit
 ```
