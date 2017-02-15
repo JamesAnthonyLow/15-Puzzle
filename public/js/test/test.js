@@ -2,6 +2,7 @@ function RunTests(){
   //helpers
   var fail = function(message){
     console.error("%c FAIL " + message, "color: red");
+    alert("FAIL " + message);
   };
   var pass = function(message){
     console.log("%c PASS " + message, "color: blue");
