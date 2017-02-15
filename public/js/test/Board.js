@@ -1,4 +1,14 @@
 var TestBoard = {
+  test_getPieceHeight: function(name){
+    var height = Board.getPieceHeight();
+    Helpers.expect(name + " height is defined", height !== undefined);
+    Helpers.expect(name + " height is greater than 0", height > 0);
+  },
+  test_getBoardWidth: function(name){
+    var width = Board.getPieceWidth();
+    Helpers.expect(name + " width is defined", width !== undefined);
+    Helpers.expect(name + " width is greater than 0", width > 0);
+  },
   test_getChosen: function(name){
     var chosen = Board.getChosen();
     Helpers.expect(name, chosen !== undefined);
@@ -27,7 +37,7 @@ var TestBoard = {
     Helpers.expect(name + " piece is defined", 
       oneUp !== undefined);
     Helpers.expect(name + " oneUp should be one piece size up from chosen",
-      (chosen.top - Piece.getPieceHeight()) == oneUp.top);
+      (chosen.top - Board.getPieceHeight()) == oneUp.top);
     Helpers.expect(name + " oneUp should be same column as chosen",
       chosen.left == oneUp.left && chosen.right == oneUp.right);
   },

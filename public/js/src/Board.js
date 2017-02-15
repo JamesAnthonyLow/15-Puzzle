@@ -14,6 +14,27 @@ var Board = {
   getEmpty: function(){
     return Piece.newPiece(document.getElementsByClassName("empty")[0]);
   },
+  pieceSide: { top: undefined, left: undefined },
+  getPieceSize: function(side){
+    if(this.pieceSide[side] !== undefined)
+      return this.pieceSide[side];
+    var diff = 0, pieces = this.getPieces();
+    for(var i=0; i<pieces.length-1; i++){
+      diff = Math.abs(pieces[i][side] - pieces[i+1][side]);
+      if(diff > 0){
+        this.pieceSide[side] = diff;
+        return this.pieceSide[side];
+      }
+    }
+    return 0;
+  },
+  getPieceHeight: function(){
+    return this.getPieceSize("top");
+  },
+  getPieceWidth: function(){
+    return this.getPieceSize("left");
+  },
+
   getSideBoundary: function(side, compare){
     var p = this.getPieces();
     var min_or_max = p[0][side];
@@ -36,12 +57,12 @@ var Board = {
   },
   getPieceOneUp: function(piece){
     var x = piece.center.x;
-    var y = piece.center.y - Piece.getPieceHeight();
+    var y = piece.center.y - Board.getPieceHeight();
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneDown: function(piece){
     var x = piece.center.x;
-    var y = piece.center.y + Piece.getPieceHeight();
+    var y = piece.center.y + Board.getPieceHeight();
     return Piece.newPiece(document.elementFromPoint(x, y));
   },
   getPieceOneLeft: function(piece){
