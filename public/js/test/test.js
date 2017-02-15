@@ -38,6 +38,11 @@ function RunTests(){
         pos.right !== undefined);
       expect(name + " obj has bottom element", 
         pos.bottom !== undefined);
+    },
+    test_getPieceHeight: function(name){
+      var height = getPieceHeight();
+      expect(name + " height is defined", height !== undefined);
+      expect(name + " height is greater than 0", height > 0);
     }
   };
 

@@ -7,9 +7,16 @@ var getEmpty = function(){
 var getPosition = function(piece){
   return piece.getBoundingClientRect();
 };
-var getPositions = function(){
+var getPieceHeight = function(){
   var pieces = document.getElementsByClassName("piece");
-  for(var i=0; i<pieces.length; i++){
-    console.log(pieces[i].getBoundingClientRect());
+  var diff = 0;
+  var pos1, pos2;
+  for(var i=0; i<pieces.length-1; i++){
+    pos1 = getPosition(pieces[i]);
+    pos2 = getPosition(pieces[i+1]);
+    diff = Math.abs(pos1.top - pos2.top);
+    if(diff > 0)
+      return diff;
   }
-}
+  return 0;
+};
