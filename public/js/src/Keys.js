@@ -46,6 +46,13 @@ var Keys = (function(){
           arrowkey(e, movecursor, movetiles);
         }
       };
+    },
+    start: function(){
+      var randomize = function(e){
+        Cursor.moveTilesRandomly();
+        window.removeEventListener("click", randomize, false);
+      };
+      window.addEventListener("click", randomize, false);
     }
   };
 })();

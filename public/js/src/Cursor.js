@@ -90,26 +90,25 @@ var Cursor = (function(){
       piece.dom.classList.add("chosen");
     },
     moveTilesRandomly: function(){
-      var empty, result, howManyMoves, randomPiece;
-      howManyMoves = Randomizer.getRandom(100);
-      for(var j=0; j<howManyMoves; j++)
-        for(var i=0; i<10; i++){
-          randomPiece = Randomizer.getRandomPieceNearEmpty();
-          this.makeChosen(randomPiece);
-          result = this.moveTilesUp();
-          if(result !== undefined)
-            continue;
-          result = this.moveTilesDown();
-          if(result !== undefined)
-            continue;
-          result = this.moveTilesLeft();
-          if(result !== undefined)
-            continue;
-          result = this.moveTilesRight();
-          if(result !== undefined)
-            continue;
-          this.makeChosen(Board.getPieceByNumber(Randomizer.getRandom(15)));
-        }
+      var result, randomPiece;
+      document.getElementById("menu").classList.add("no-display");
+      for(var i=0; i<100; i++){
+        randomPiece = Randomizer.getRandomPieceNearEmpty();
+        this.makeChosen(randomPiece);
+        result = this.moveTilesUp();
+        if(result !== undefined)
+          continue;
+        result = this.moveTilesDown();
+        if(result !== undefined)
+          continue;
+        result = this.moveTilesLeft();
+        if(result !== undefined)
+          continue;
+        result = this.moveTilesRight();
+        if(result !== undefined)
+          continue;
+        this.makeChosen(Board.getPieceByNumber(Randomizer.getRandom(15)));
+      }
     }
   };
 })();

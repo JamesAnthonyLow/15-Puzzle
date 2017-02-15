@@ -7,7 +7,10 @@
 <title></title>
 </head>
 <body>
-<div id="puzzle" class="puzzle">
+<div id="menu" class="menu"><h1>Click to Start</h1><p>
+  Use arrow keys to move cursor and hold down the spacebar while pressing arrow keys to move tiles. 
+</p></div>
+<div class="puzzle">
   <div class="container">
     <div class="chosen piece square">1</div>
     <div class="piece square">2</div>
@@ -47,7 +50,7 @@
 <script>
 (function() {
  // RunTests(TestBoard);
- Cursor.moveTilesRandomly();
+ Keys.start();
  Keys.listen();
  })();
 </script>
