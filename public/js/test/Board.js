@@ -46,4 +46,19 @@ var TestBoard = {
         chosen.left == oneUp.left && chosen.right == oneUp.right);
     }
   },
+  test_getPieceOneDown: function(name){
+    var chosen = Board.getChosen();
+    var oneDown  = Board.getPieceOneDown(chosen);
+    if(Board.exceedsBottomBoundary(chosen)){
+      Helpers.expect(name + "piece is undefined if next piece down exceeds BottomBoundary", 
+        oneDown === undefined);
+    } else {
+      Helpers.expect(name + " piece is defined", 
+        oneDown !== undefined);
+      Helpers.expect(name + " oneDown should be one piece size down from chosen",
+        (chosen.bottom + Board.getPieceHeight()) == oneDown.bottom);
+      Helpers.expect(name + " oneDown should be same column as chosen",
+        chosen.left == oneDown.left && chosen.right == oneDown.right);
+    }
+  }
 };

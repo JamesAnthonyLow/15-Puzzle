@@ -63,6 +63,8 @@ var Board = (function() {
       return Piece(document.elementFromPoint(x, y));
     },
     getPieceOneDown: function(piece){
+      if(this.exceedsBottomBoundary(piece))
+        return undefined;
       var x = piece.center.x;
       var y = piece.center.y + Board.getPieceHeight();
       return Piece(document.elementFromPoint(x, y));
@@ -75,6 +77,9 @@ var Board = (function() {
     },
     exceedsTopBoundary: function(piece){
       return piece.top == this.getTopBoundary();
+    },
+    exceedsBottomBoundary: function(piece){
+      return piece.bottom == this.getBottomBoundary();
     }
-  }
+  };
 })();
