@@ -6,7 +6,7 @@ var Randomizer = (function(){
     p = direction(Board.getEmpty());
     if(p){
       for(i=0; i<getRandom(3); i++)
-        p = direction(empty);
+        p = direction(Board.getEmpty());
     }
     return p;
   };
@@ -46,10 +46,11 @@ var Randomizer = (function(){
   };
 
   return {
-    getRandom: function(n){ return getRandom(n); },
+    getRandom: function(n){ 
+      return getRandom(n); 
+    },
     getRandomPieceNearEmpty: function(){
-      var randomPiece, empty, i;
-      empty = this.getEmpty();
+      var randomPiece;
       switch(getRandom(2)){
         case 1:
           randomPiece = verticalFirst();
@@ -61,4 +62,4 @@ var Randomizer = (function(){
       return randomPiece;
     }
   };
-});
+})();

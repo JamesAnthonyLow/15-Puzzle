@@ -91,13 +91,10 @@ var Cursor = (function(){
     },
     moveTilesRandomly: function(){
       var empty, result, howManyMoves, randomPiece;
-      var getRandom = function(n){
-        return Math.floor(Math.random() * n);
-      };
-      howManyMoves = getRandom(1000);
+      howManyMoves = Randomizer.getRandom(1000);
       for(var j=0; j<howManyMoves; j++)
         for(var i=0; i<10; i++){
-          randomPiece = Board.getRandomPieceNearEmpty();
+          randomPiece = Randomizer.getRandomPieceNearEmpty();
           this.makeChosen(randomPiece);
           result = this.moveTilesUp();
           if(result !== undefined)
@@ -111,7 +108,7 @@ var Cursor = (function(){
           result = this.moveTilesRight();
           if(result !== undefined)
             continue;
-          this.makeChosen(Board.getPieceByNumber(getRandom(15)));
+          this.makeChosen(Board.getPieceByNumber(Randomizer.getRandom(15)));
         }
     }
   };
