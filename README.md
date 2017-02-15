@@ -12,4 +12,4 @@ rake compile #To compress the javascript into one file
 rake watch #To watch your javascript files and compress as you edit
 ```
 
-I did not use a framework for JS testing.  To run tests uncomment ```RunTests``` line in ```index.html``` and ```"tests"``` in ```[config.json](public/js/config.json)```
+I did not use a framework for JS testing.  To run tests uncomment ```RunTests``` line in [index.html](https://github.com/JamesAnthonyLow/15-Puzzle/blob/master/public/index.html) and ```"tests"``` in [config.json](https://github.com/JamesAnthonyLow/15-Puzzle/blob/master/public/js/config.json)
