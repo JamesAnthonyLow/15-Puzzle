@@ -48,6 +48,7 @@ body {
 }
 
 .chosen{
+  outline: brown solid 5px;
   position:relative;
 }
 
