@@ -15,7 +15,7 @@ var Helpers  = {
 };
 
 var RunTests = function(TestObj){
-   //run each test
+  //run each test
   console.clear();
   for (var key in TestObj) 
     TestObj[key](key.toString());

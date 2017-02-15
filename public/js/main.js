@@ -11,20 +11,30 @@ var Piece = {
       arr.push(this.newPiece(p[i]));
     return arr;
   },
+  pieceSide: { top: undefined, left: undefined },
   getPieceSize: function(side){
+    if(this.pieceSide[side] !== undefined)
+      return this.pieceSide[side];
     var diff = 0, pieces = this.getPieces();
     for(var i=0; i<pieces.length-1; i++){
       diff = Math.abs(pieces[i][side] - pieces[i+1][side]);
-      if(diff > 0)
-        return diff;
+      if(diff > 0){
+        this.pieceSide[side] = diff;
+        return this.pieceSide[side];
+      }
     }
     return 0;
   },
   getPieceHeight: function(){
-   return this.getPieceSize("top");
+    return this.getPieceSize("top");
   },
   getPieceWidth: function(){
     return this.getPieceSize("left");
+  },
+  getPieceOneUp: function(piece){
+    var x = piece.left+5;
+    var y = piece.top-this.getPieceHeight();
+    return document.elementFromPoint(x, y);
   },
   newPiece: function(domObj){
     var piece = {}, pos;
