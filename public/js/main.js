@@ -11,23 +11,20 @@ var Piece = {
       arr.push(this.newPiece(p[i]));
     return arr;
   },
-  getPieceHeight: function(){
+  getPieceSize: function(side){
     var diff = 0, pieces = this.getPieces();
     for(var i=0; i<pieces.length-1; i++){
-      diff = Math.abs(pieces[i].top - pieces[i+1].top);
+      diff = Math.abs(pieces[i][side] - pieces[i+1][side]);
       if(diff > 0)
         return diff;
     }
     return 0;
   },
+  getPieceHeight: function(){
+   return this.getPieceSize("top");
+  },
   getPieceWidth: function(){
-    var diff = 0, pieces = this.getPieces();
-    for(var i=0; i<pieces.length-1; i++){
-      diff = Math.abs(pieces[i].left - pieces[i+1].left);
-      if(diff > 0)
-        return diff;
-    }
-    return 0;
+    return this.getPieceSize("left");
   },
   newPiece: function(domObj){
     var piece = {}, pos;
