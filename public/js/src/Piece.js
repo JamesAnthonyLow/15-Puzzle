@@ -1,4 +1,6 @@
 function Piece(domObj){
+  if(domObj === null)
+    return undefined;
   var pos = function(){
     return domObj.getBoundingClientRect();
   };
