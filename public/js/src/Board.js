@@ -12,6 +12,14 @@ var Board = (function() {
     getChosen: function(){
       return Piece(document.getElementsByClassName("chosen")[0]);
     },
+    getPieceByNumber: function(n){
+      var p = this.getPieces();
+      for(var i=0; i<p.length; i++){
+        if(p[i].dom.innerHTML == n)
+          return p;
+      }
+      return undefined;
+    },
     getEmpty: function(){
       return Piece(document.getElementsByClassName("empty")[0]);
     },

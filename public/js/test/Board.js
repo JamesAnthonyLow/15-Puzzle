@@ -13,6 +13,10 @@ var TestBoard = {
     var chosen = Board.getChosen();
     Helpers.expect(name, chosen !== undefined);
   },
+  test_getPieceByNumber: function(name){
+    var piece = Board.getPieceByNumber(3);
+    Helpers.expect(name, piece !== undefined);
+  },
   test_getEmpty: function(name){
     var empty = Board.getEmpty();
     Helpers.expect(name, empty !== undefined);
