@@ -47,5 +47,15 @@ var TestPiece = {
     var width = Piece.getPieceWidth();
     Helpers.expect(name + " width is defined", width !== undefined);
     Helpers.expect(name + " width is greater than 0", width > 0);
+  },
+  test_getPieceOneUp: function(name){
+    var chosen = Piece.getChosen();
+    var oneUp  = Piece.getPieceOneUp(chosen);
+    Helpers.expect(name + " piece is defined", 
+      oneUp !== undefined);
+    Helpers.expect(name + " oneUp should be one piece size up from chosen",
+      (chosen.top - Piece.getPieceHeight()) == oneUp.top);
+    Helpers.expect(name + " oneUp should be same column as chosen",
+      chosen.left == oneUp.left && chosen.right == oneUp.right);
   }
 };

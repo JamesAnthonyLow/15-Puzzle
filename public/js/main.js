@@ -32,9 +32,10 @@ var Piece = {
     return this.getPieceSize("left");
   },
   getPieceOneUp: function(piece){
-    var x = piece.left+5;
-    var y = piece.top-this.getPieceHeight();
-    return document.elementFromPoint(x, y);
+    var centering = this.getPieceHeight() * 0.05;
+    var x = piece.left+centering;
+    var y = piece.top-(this.getPieceHeight()-centering);
+    return this.newPiece(document.elementFromPoint(x, y));
   },
   newPiece: function(domObj){
     var piece = {}, pos;
