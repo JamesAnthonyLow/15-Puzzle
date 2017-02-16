@@ -1,33 +1,35 @@
 :root {
   /*variables that may need to be changed in media queries*/
-  --piecesize: 100px;
-  --piecemargin: 5px;
+  --squaresize: 100px;
+  --squaremargin: 5px;
   --puzzlesize: 480px;
+  --menusize: 600px;
   --negpuzzlesize: -440px;
   --containeroffset: 14px;
-  --piecefontsize: 5em;
+  --squarefontsize: 5em;
 
   /*colors*/
   --brightbeige: #ffffe6;
   --lightergrey: #b3b3b3;
   --darkergrey: #8c8c8c;
   --emptycolor: white;
+  --menucolor: rgba(255,255,255,0.9);
 }
 
 body {
   background: var(--brightbeige);
 }
 
-.piece {
-  height: var(--piecesize);
-  width: var(--piecesize);
-  margin: var(--piecemargin);
+.square {
+  height: var(--squaresize);
+  width: var(--squaresize);
+  margin: var(--squaremargin);
   text-align: center;
-  line-height: var(--piecesize);
-  font-size: var(--piecefontsize);
+  line-height: var(--squaresize);
+  font-size: var(--squarefontsize);
 
   /*shadow effects and font coloring*/
-  color: white;
+  color: var(--emptycolor);
   text-shadow: 2px 2px 4px #000000;
   box-shadow: 10px 10px 5px grey;
 
@@ -48,6 +50,7 @@ body {
 }
 
 .chosen{
+  outline: brown solid 5px;
   position:relative;
 }
 
@@ -66,6 +69,26 @@ body {
   top: var(--containeroffset);
 }
 
+.menu{
+  background: var(--menucolor);
+  padding: 30px;
+  margin: auto;
+  height: var(--menusize);
+  width: var(--menusize);
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border-radius: 10%;
+  z-index: 4;
+  color: brown;
+}
+
+.no-display{
+  display: none;
+}
+
+h1{
+  margin-top: 30%;
+}
 .puzzle {
   height: var(--puzzlesize);
   width: var(--puzzlesize);

@@ -3,45 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="index.css"/>
+<script src="js/build/main.js"></script>
 <title></title>
 </head>
 <body>
-<div id="puzzle" class="puzzle">
+<div id="menu" class="menu"><h1>Click to Start</h1><p>
+  Use arrow keys to move cursor and hold down the spacebar while pressing arrow keys to move tiles. 
+</p></div>
+<div class="puzzle">
   <div class="container">
-    <div class="piece">1</div>
-    <div class="piece">2</div>
-    <div class="piece">3</div>
-    <div class="piece">4</div>
-    <div class="piece">5</div>
-    <div class="piece">6</div>
-    <div class="piece">7</div>
-    <div class="piece">8</div>
-    <div class="piece">9</div>
-    <div class="piece">10</div>
-    <div class="piece">11</div>
-    <div class="piece">12</div>
-    <div class="piece">13</div>
-    <div class="piece">14</div>
-    <div class="chosen piece">15</div>
-    <div class="empty piece">16</div>
+    <div class="chosen piece square">1</div>
+    <div class="piece square">2</div>
+    <div class="piece square">3</div>
+    <div class="piece square">4</div>
+    <div class="piece square">5</div>
+    <div class="piece square">6</div>
+    <div class="piece square">7</div>
+    <div class="piece square">8</div>
+    <div class="piece square">9</div>
+    <div class="piece square">10</div>
+    <div class="piece square">11</div>
+    <div class="piece square">12</div>
+    <div class="piece square">13</div>
+    <div class="piece square">14</div>
+    <div class="piece square">15</div>
+    <div class="empty square">16</div>
 
-    <div class="backdrop piece">1</div>
-    <div class="backdrop piece">2</div>
-    <div class="backdrop piece">3</div>
-    <div class="backdrop piece">4</div>
-    <div class="backdrop piece">5</div>
-    <div class="backdrop piece">6</div>
-    <div class="backdrop piece">7</div>
-    <div class="backdrop piece">8</div>
-    <div class="backdrop piece">9</div>
-    <div class="backdrop piece">10</div>
-    <div class="backdrop piece">11</div>
-    <div class="backdrop piece">12</div>
-    <div class="backdrop piece">13</div>
-    <div class="backdrop piece">14</div>
-    <div class="backdrop piece">15</div>
-    <div class="backdrop piece">16</div>
+    <div class="backdrop square">1</div>
+    <div class="backdrop square">2</div>
+    <div class="backdrop square">3</div>
+    <div class="backdrop square">4</div>
+    <div class="backdrop square">5</div>
+    <div class="backdrop square">6</div>
+    <div class="backdrop square">7</div>
+    <div class="backdrop square">8</div>
+    <div class="backdrop square">9</div>
+    <div class="backdrop square">10</div>
+    <div class="backdrop square">11</div>
+    <div class="backdrop square">12</div>
+    <div class="backdrop square">13</div>
+    <div class="backdrop square">14</div>
+    <div class="backdrop square">15</div>
+    <div class="backdrop square">16</div>
   </div>
 </div>
+<script>
+(function() {
+ // RunTests(TestBoard);
+ Keys.start();
+ Keys.listen();
+ })();
+</script>
 </body>
 </html>
